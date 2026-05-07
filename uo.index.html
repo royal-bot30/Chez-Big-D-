@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Big D. — Collection 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@600;700;800&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════
+   VARIABLES
+═══════════════════════════════════════════════ */
+:root {
+  --white:      #ffffff;
+  --black:      #111111;
+  --blue:       #38BDF8;   /* bleu ciel principal */
+  --blue-dark:  #0EA5E9;   /* bleu ciel hover */
+  --blue-deep:  #0284C7;   /* bleu ciel actif/ombres */
+  --blue-text:  #0369A1;   /* bleu pour texte sur fond blanc (contraste) */
+  --gray-light: #F8F9FA;
+  --gray-mid:   #DEE2E6;
+  --text-main:  #111111;
+  --text-soft:  #3D3D3D;
+  --green-wa:   #25D366;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  background: var(--white);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════ */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--white);
+  border-bottom: 3px solid var(--black);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; height: 56px;
+}
+.nav-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem; letter-spacing: 6px; color: var(--black);
+}
+.nav-brand span { color: var(--blue-text); }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a {
+  text-decoration: none; font-size: .78rem; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--text-main);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--blue-text); }
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+#accueil {
+  background: var(--white);
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 64px 24px 52px;
+  position: relative; overflow: hidden;
+}
+#accueil::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, #EBEBEB 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, #EBEBEB 60px);
+  opacity: .4; pointer-events: none;
+}
+
+.collection-tag {
+  display: inline-block;
+  background: var(--black); color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: .85rem; letter-spacing: 6px; text-transform: uppercase;
+  padding: 7px 24px; margin-bottom: 32px;
+  position: relative; z-index: 1;
+  animation: fadeDown .7s ease both;
+}
+.collection-tag span { color: var(--blue); }
+
+.logo-circle {
+  width: 132px; height: 132px; border-radius: 50%;
+  border: 3px solid var(--black); background: var(--white);
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 30px; position: relative; z-index: 1;
+  box-shadow: 5px 5px 0 var(--black);
+  animation: fadeDown .8s ease .1s both;
+}
+.logo-circle img { width: 100%; height: 100%; object-fit: cover; display: none; }
+.logo-placeholder {
+  font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem;
+  color: var(--gray-mid); letter-spacing: 2px; user-select: none;
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.6rem, 9vw, 4.6rem);
+  letter-spacing: 7px; line-height: 1; margin-bottom: 16px;
+  position: relative; z-index: 1;
+  animation: fadeDown .8s ease .2s both;
+  color: var(--black);
+}
+.hero-title span { color: var(--blue-text); }
+
+.hero-products {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .95rem; font-weight: 800;
+  color: var(--text-soft); letter-spacing: 3.5px; text-transform: uppercase;
+  margin-bottom: 22px; line-height: 2.2;
+  position: relative; z-index: 1;
+  animation: fadeDown .8s ease .3s both;
+}
+.hero-products strong { color: var(--blue-text); }
+
+.slogan {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(.95rem, 2.5vw, 1.1rem); font-style: italic;
+  color: var(--text-soft); max-width: 440px; line-height: 1.8;
+  margin-bottom: 36px; position: relative; z-index: 1;
+  animation: fadeDown .8s ease .4s both;
+  padding: 14px 24px;
+  border-left: 4px solid var(--blue); border-right: 4px solid var(--blue);
+}
+
+.hero-btns {
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+  position: relative; z-index: 1;
+  animation: fadeDown .8s ease .5s both;
+}
+
+/* ═══════════════════════════════════════════════
+   BOUTONS
+═══════════════════════════════════════════════ */
+.btn-blue {
+  display: inline-block;
+  background: var(--blue); color: var(--black);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: .85rem; letter-spacing: 2.5px; text-transform: uppercase;
+  text-decoration: none; padding: 14px 38px; border: none; cursor: pointer;
+  box-shadow: 4px 4px 0 var(--black);
+  transition: background .2s, transform .15s, box-shadow .15s;
+}
+.btn-blue:hover { background: var(--blue-dark); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); }
+.btn-blue:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--black); }
+
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--green-wa); color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: .85rem; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; padding: 14px 38px;
+  box-shadow: 4px 4px 0 var(--black);
+  transition: background .2s, transform .15s, box-shadow .15s;
+}
+.btn-whatsapp:hover { background: #1da851; transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); }
+.btn-whatsapp svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════════════ */
+.section-divider {
+  height: 3px;
+  background: linear-gradient(90deg, var(--black) 0%, var(--blue) 50%, var(--black) 100%);
+}
+
+/* ═══════════════════════════════════════════════
+   SECTIONS COMMUNES
+═══════════════════════════════════════════════ */
+section { padding: 72px 24px; }
+.section-inner { max-width: 740px; margin: 0 auto; text-align: center; }
+
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: .72rem; letter-spacing: 6px; color: var(--blue-text);
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 3.4rem); letter-spacing: 4px;
+  color: var(--black); margin-bottom: 32px; line-height: 1;
+}
+.section-title span { color: var(--blue-text); }
+
+/* ═══════════════════════════════════════════════
+   ADRESSE
+═══════════════════════════════════════════════ */
+#adresse { background: var(--gray-light); }
+.adresse-card {
+  background: var(--white); border: 2px solid var(--black);
+  padding: 36px 32px; display: inline-block;
+  box-shadow: 7px 7px 0 var(--black);
+}
+.adresse-card p {
+  font-size: 1.1rem; font-weight: 800; margin-bottom: 24px;
+  color: var(--text-main); line-height: 1.6;
+}
+.adresse-card p strong { color: var(--blue-text); }
+
+/* ═══════════════════════════════════════════════
+   HORAIRES
+═══════════════════════════════════════════════ */
+#horaires { background: var(--white); }
+.horaires-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 8px; }
+.horaire-card {
+  border: 2px solid var(--black); padding: 24px 34px; min-width: 210px;
+  box-shadow: 4px 4px 0 var(--blue);
+}
+.horaire-card .days {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+  letter-spacing: 2px; color: var(--blue-text); margin-bottom: 6px;
+}
+.horaire-card .hours { font-size: 1.05rem; font-weight: 900; color: var(--black); letter-spacing: 1px; }
+
+/* ═══════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════ */
+#contact { background: var(--gray-light); }
+.contact-block { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.contact-phone {
+  font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+  letter-spacing: 3px; color: var(--black);
+}
+.contact-phone a { color: var(--blue-text); text-decoration: none; }
+.divider-ou {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--text-soft); font-size: .8rem; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase; width: 200px;
+}
+.divider-ou::before, .divider-ou::after { content: ''; flex: 1; height: 1px; background: var(--gray-mid); }
+
+/* ═══════════════════════════════════════════════
+   COMMENT ÇA MARCHE
+═══════════════════════════════════════════════ */
+#comment { background: var(--black); }
+#comment .section-title { color: var(--white); }
+#comment .section-label { color: var(--blue); }
+.steps-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; margin-top: 16px; }
+.step-card {
+  background: transparent; border: 2px solid #2a2a2a; color: var(--white);
+  padding: 30px 26px; width: 210px; text-align: center;
+  transition: border-color .25s, box-shadow .25s;
+}
+.step-card:hover { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+.step-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 3.4rem;
+  color: var(--blue); line-height: 1; margin-bottom: 12px;
+}
+.step-text { font-size: .92rem; font-weight: 700; line-height: 1.6; color: #C0C0C0; }
+
+/* ═══════════════════════════════════════════════
+   PRODUITS
+═══════════════════════════════════════════════ */
+#produits { background: var(--white); }
+.categories-wrapper { margin-top: 20px; }
+.category-block { margin-bottom: 52px; }
+.category-name {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem;
+  letter-spacing: 5px; color: var(--black);
+  text-align: left; padding: 10px 0 10px 18px;
+  border-left: 5px solid var(--blue); margin-bottom: 18px;
+}
+.category-name span { color: var(--blue-text); font-size: 1rem; letter-spacing: 3px; }
+
+.scroll-row {
+  display: flex; gap: 16px; overflow-x: auto;
+  padding-bottom: 14px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-row::-webkit-scrollbar { height: 4px; }
+.scroll-row::-webkit-scrollbar-track { background: var(--gray-light); }
+.scroll-row::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+/* ── Carte produit ── */
+.product-card {
+  flex: 0 0 190px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  display: flex; flex-direction: column;
+  scroll-snap-align: start;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: transform .2s, box-shadow .2s;
+}
+.product-card:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); }
+
+.product-img-area {
+  width: 100%; height: 205px;
+  background: var(--gray-light);
+  border-bottom: 2px solid var(--black);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; flex-shrink: 0; position: relative;
+}
+.product-img-area img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.img-ph {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 7px; color: #bbb;
+  transition: opacity .2s;
+}
+.img-ph svg { width: 36px; height: 36px; fill: #ccc; }
+.img-ph span { font-size: .6rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 800; }
+.img-ph.hidden { display: none; }
+
+.product-info { padding: 11px 11px 13px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.product-nom {
+  font-size: .78rem; font-weight: 800; color: var(--text-main);
+  line-height: 1.4; letter-spacing: .3px;
+  text-transform: capitalize;
+}
+.product-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem; letter-spacing: 2px; color: var(--blue-text);
+}
+.btn-order {
+  display: block; width: 100%;
+  background: var(--blue); color: var(--black);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: .78rem; letter-spacing: 2.5px; text-transform: uppercase;
+  border: none; cursor: pointer; padding: 10px 0;
+  box-shadow: 2px 2px 0 var(--black);
+  transition: background .2s, transform .1s, box-shadow .1s;
+  margin-top: auto;
+}
+.btn-order:hover { background: var(--blue-dark); transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--black); }
+.btn-order:active { transform: translate(1px,1px); box-shadow: none; }
+
+/* ═══════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════ */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,.75);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--white); border: 3px solid var(--black);
+  box-shadow: 8px 8px 0 var(--blue);
+  width: 100%; max-width: 430px; padding: 34px 30px;
+  position: relative; animation: modalIn .25s ease;
+}
+@keyframes modalIn { from { opacity:0; transform:scale(.94) } to { opacity:1; transform:scale(1) } }
+
+.modal-close {
+  position: absolute; top: 14px; right: 18px;
+  background: none; border: none; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-soft);
+}
+.modal-close:hover { color: var(--blue-text); }
+
+.modal-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem;
+  letter-spacing: 4px; color: var(--black); margin-bottom: 4px;
+}
+.modal-product-name {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+  font-size: .82rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--blue-text); margin-bottom: 8px;
+}
+.modal-product-price {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
+  letter-spacing: 2px; color: var(--black); margin-bottom: 24px;
+}
+
+.modal-form { display: flex; flex-direction: column; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-size: .7rem; font-weight: 900; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--black);
+}
+.form-group input {
+  border: 2px solid var(--black); padding: 12px 14px;
+  font-family: 'Barlow', sans-serif; font-weight: 700; font-size: .92rem;
+  outline: none; color: var(--text-main);
+  transition: border-color .2s;
+}
+.form-group input:focus { border-color: var(--blue); }
+.form-group input::placeholder { font-weight: 400; color: #aaa; }
+
+.btn-submit {
+  background: var(--blue); color: var(--black);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: .92rem; letter-spacing: 3px; text-transform: uppercase;
+  border: none; cursor: pointer; padding: 15px;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: background .2s, transform .1s; margin-top: 6px;
+}
+.btn-submit:hover { background: var(--blue-dark); transform: translate(-1px,-1px); }
+.btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+.form-status {
+  text-align: center; font-size: .82rem; font-weight: 800;
+  letter-spacing: 1px; padding: 9px; display: none;
+}
+.form-status.success { color: #166534; background: #DCFCE7; display: block; }
+.form-status.error   { color: #991B1B; background: #FEE2E2; display: block; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  background: var(--black); color: #777; text-align: center;
+  padding: 30px 24px; font-size: .78rem; font-weight: 700; letter-spacing: 1px;
+}
+footer strong { color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: 4px; }
+footer a { color: var(--blue); text-decoration: none; }
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS & RESPONSIVE
+═══════════════════════════════════════════════ */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 480px) {
+  .nav-links { display: none; }
+  .product-card { flex: 0 0 162px; }
+  .product-img-area { height: 178px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ MODAL COMMANDE ══════════════ -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕ Fermer</button>
+    <div class="modal-title">Commander</div>
+    <div class="modal-product-name" id="modalProductName"></div>
+    <div class="modal-product-price" id="modalProductPrice"></div>
+    <div class="modal-form">
+      <div class="form-group">
+        <label>Nom complet</label>
+        <input type="text" id="clientName" placeholder="Ex : Kofi Amégavi"/>
+      </div>
+      <div class="form-group">
+        <label>Numéro WhatsApp</label>
+        <input type="tel" id="clientWhatsapp" placeholder="Ex : +228 90 00 00 00"/>
+      </div>
+      <div class="form-group">
+        <label>Quartier</label>
+        <input type="text" id="clientQuartier" placeholder="Ex : Adidogomé, Bè, Nyékonakpoè..."/>
+      </div>
+      <button class="btn-submit" id="submitBtn" onclick="sendOrder()">
+        ✓ Confirmer ma commande
+      </button>
+      <div class="form-status" id="formStatus"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav>
+  <div class="nav-brand">BIG <span>D.</span></div>
+  <ul class="nav-links">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#adresse">Adresse</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#produits">Produits</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ SECTION 1 — HERO ══════════════ -->
+<section id="accueil">
+  <div class="collection-tag">✦ Collection <span>2026</span> ✦</div>
+
+  <!-- Logo : remplace src="" par le chemin de ton image, ex: src="images/logo.jpg" -->
+  <div class="logo-circle">
+    <img src="" alt="Logo Big D."/>
+    <span class="logo-placeholder">BD</span>
+  </div>
+
+  <h1 class="hero-title">Bienvenue <span>Chez</span> Big D.</h1>
+
+  <p class="hero-products">
+    <strong>Pull</strong> &nbsp;·&nbsp; <strong>Jean</strong> &nbsp;·&nbsp;
+    <strong>Montre</strong> &nbsp;·&nbsp; <strong>Accessoires</strong><br/>
+    <strong>Chapeau</strong> &nbsp;·&nbsp; <strong>Sac</strong> &nbsp;·&nbsp; <strong>Chemise</strong>
+  </p>
+
+  <blockquote class="slogan">
+    « Faites nous confiance, nous œuvrons comme des femmes hébreux »
+  </blockquote>
+
+  <div class="hero-btns">
+    <a href="#produits" class="btn-blue">Voir nos produits →</a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════ SECTION 2 — ADRESSE ══════════════ -->
+<section id="adresse">
+  <div class="section-inner">
+    <p class="section-label">Nous trouver</p>
+    <h2 class="section-title">Notre <span>Adresse</span></h2>
+    <div class="adresse-card">
+      <p>Notre boutique est située à <strong>Vakpossito</strong>, Lomé — Togo.</p>
+      <a href="https://maps.app.goo.gl/y2GYH3XuDu9wxJBt8" target="_blank" rel="noopener" class="btn-blue">
+        📍 Voir sur Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════ SECTION 3 — HORAIRES ══════════════ -->
+<section id="horaires">
+  <div class="section-inner">
+    <p class="section-label">Quand nous rendre visite</p>
+    <h2 class="section-title">Nos <span>Horaires</span></h2>
+    <div class="horaires-grid">
+      <div class="horaire-card">
+        <div class="days">Lundi — Vendredi</div>
+        <div class="hours">08h30 → 20h30</div>
+      </div>
+      <div class="horaire-card">
+        <div class="days">Samedi</div>
+        <div class="hours">09h00 → 21h30</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════ SECTION 4 — CONTACT ══════════════ -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Parlons-nous</p>
+    <h2 class="section-title"><span>Contact</span></h2>
+    <div class="contact-block">
+      <p class="contact-phone">Appelez-nous : <a href="tel:+22893388198">+228 93 38 81 98</a></p>
+      <div class="divider-ou">Ou</div>
+      <a href="https://wa.me/22893388198"
+         onclick="var u='https://wa.me/22893388198';try{window.open(u,'_blank')}catch(e){location.href=u};return false;"
+         class="btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Discuter sur WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════ SECTION 5 — COMMENT ÇA MARCHE ══════════════ -->
+<section id="comment">
+  <div class="section-inner">
+    <p class="section-label">Simple &amp; rapide</p>
+    <h2 class="section-title">Comment <span>ça se passe</span></h2>
+    <div class="steps-row">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-text">Vous commandez le ou les produits que vous souhaitez</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-text">Le livreur vient vous livrer à domicile</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-text">Vous payez à la livraison</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     BIG D. — SECTION PRODUITS COMPLÈTE
+     
+     COMMENT MODIFIER UN PRODUIT :
+     1. src="..."        → chemin de la photo
+     2. alt="..."        → description courte (pour accessibilité)
+     3. product-nom      → nom affiché sur la carte
+     4. product-price    → prix affiché sur la carte
+     5. data-nom="..."   → nom envoyé dans la commande (= même valeur que product-nom)
+     6. data-prix="..."  → prix envoyé dans la commande (= même valeur que product-price)
+     7. data-image="..." → chemin image envoyé dans la commande (= même valeur que src)
+     
+     COMMENT AJOUTER UN PRODUIT :
+     Copie un bloc product-card complet et modifie les 7 points ci-dessus.
+══════════════════════════════════════════════════════════════ -->
+
+<!-- ══════════════ SECTION 6 — PRODUITS ══════════════ -->
+<section id="produits">
+  <div style="max-width:1000px; margin:0 auto;">
+    <p class="section-label" style="text-align:center;">Notre sélection</p>
+    <h2 class="section-title" style="text-align:center;">Explorer nos <span>Produits</span></h2>
+
+    <div class="categories-wrapper">
+
+
+      <!-- ════════════════════════════════════════════
+           PULL — 10 articles
+      ════════════════════════════════════════════ -->
+      <div class="category-block">
+        <div class="category-name">Pull <span>— 10 articles</span></div>
+        <div class="scroll-row">
+
+
+          <!-- ── Pull 1 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull1.jpg"
+                alt="Pull 1"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull cendre</div>
+              <div class="product-price">16000FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull Cendre"
+                data-prix="16000 FCFA"
+                data-image="images/pull1.jpg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 2 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull2.jpg"
+                alt="Pull 2"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull cendre</div>
+              <div class="product-price">16000FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull cendre"
+                data-prix="16000 FCFA"
+                data-image="images/pull2.jpg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 3 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull3.jpg"
+                alt="Pull 3"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull Torom Cendre</div>
+              <div class="product-price">16000FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull Torom Cendre"
+                data-prix="16000 FCFA"
+                data-image="images/pull3.jpg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 4 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull4.jpeg"
+                alt="Pull 4"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull  Noir</div>
+              <div class="product-price">16000FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull Noir"
+                data-prix="16000FCFA"
+                data-image="images/pull4.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 5 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull5.jpg"
+                alt="Pull 5"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull Bleu</div>
+              <div class="product-price">16000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull Bleu"
+                data-prix="16000FCFA"
+                data-image="images/pull5.jpg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 6 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull6.jpeg"
+                alt="Pull 6"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull Blanc</div>
+              <div class="product-price">16000FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull Blanc"
+                data-prix="16000 FCFA"
+                data-image="images/pull6.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 7 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull7.jpeg"
+                alt="Pull 7"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull Gris</div>
+              <div class="product-price">16000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull Gris"
+                data-prix="16000 FCFA"
+                data-image="images/pull7.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 8 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull8.jpeg"
+                alt="Pull 8"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull Vert</div>
+              <div class="product-price">160000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull Vert"
+                data-prix="16000 FCFA"
+                data-image="images/pull8.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 9 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull9.jpeg"
+                alt="Pull 9"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull TORUM Bleu Foncé</div>
+              <div class="product-price">16000FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull TORUM Bleu Foncé"
+                data-prix="16000 FCFA"
+                data-image="images/pull9.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Pull 10 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/pull10.jpeg"
+                alt="Pull 10"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Pull TORUM Bleu</div>
+              <div class="product-price">16 000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Pull TOROM Bleu"
+                data-prix="16 000 FCFA"
+                data-image="images/pull10.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          </div>
+      </div><!-- /PULL -->
+
+
+      <!-- ════════════════════════════════════════════
+           CHAUSSURE — 11 Articles
+      ════════════════════════════════════════════ -->
+      <div class="category-block">
+        <div class="category-name">CHAUSSURES <span>— 11 articles</span></div>
+        <div class="scroll-row">
+
+
+          <!-- ── Chemise 1 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise1.jpeg"
+                alt="Chemise 1"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Air Force Blanc lacées Jaune</div>
+              <div class="product-price">12000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Air Force Blanc lacées Jaune"
+                data-prix="12 000 FCFA"
+                data-image="images/chemise1.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 2 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise2.jpeg"
+                alt="Chemise 2"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Air force blanc lacées Rose</div>
+              <div class="product-price">12000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Air force blanc lacées Rose"
+                data-prix="12000 FCFA"
+                data-image="images/chemise2.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 3 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise3.jpeg"
+                alt="Chemise 3"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Air force blanc lacées Rouge</div>
+              <div class="product-price">12000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Air force blanc lacées Rouge"
+                data-prix="12 000 FCFA"
+                data-image="images/chemise3.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 4 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise4.jpeg"
+                alt="Chemise 4"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Air force blanc lacées multicolore</div>
+              <div class="product-price">12000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Air force blanc lacées multicolore"
+                data-prix="12000 FCFA"
+                data-image="images/chemise4.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 5 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise5.jpeg"
+                alt="Chemise 5"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaussures noir</div>
+              <div class="product-price">12 000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Chaussures Noir"
+                data-prix="12 000 FCFA"
+                data-image="images/chemise5.jpg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 6 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise6.jpg"
+                alt="Chemise 6"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaussures noir violet</div>
+              <div class="product-price">12000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Chaussures noir violet"
+                data-prix="12000 FCFA"
+                data-image="images/chemise6.jpg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 7 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise7.jpg"
+                alt="Chemise 7"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaussures noir</div>
+              <div class="product-price">12000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Chaussures Noir"
+                data-prix="12000 FCFA"
+                data-image="images/chemise7.jpg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 8 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise8.jpg"
+                alt="Chemise 8"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaussures jaune </div>
+              <div class="product-price">12000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Chaussures jaune"
+                data-prix="12000 FCFA"
+                data-image="images/chemise8.jpg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 9 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise9.jpeg"
+                alt="Chemise 9"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaussure Rouge</div>
+              <div class="product-price">12 000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Chaussures Rouge"
+                data-prix="12 000 FCFA"
+                data-image="images/chemise9.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 10 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise10.jpeg"
+                alt="Chemise 10"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaussures Bleu</div>
+              <div class="product-price">12 000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Chaussure Bleu"
+                data-prix="12 000 FCFA"
+                data-image="images/chemise10.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+          <!-- ── Chemise 11 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/chemise11.jpeg"
+                alt="Chemise 11"
+              />
+              <div class="img-ph">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaussure beige</div>
+              <div class="product-price">12000 FCFA</div>
+              <button
+                class="btn-order"
+                data-nom="Chaussures Beige"
+                data-prix="12000 FCFA"
+                data-image="images/chemise11.jpeg"
+                onclick="handleOrder(this)"
+              >Commander</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div><!-- /CHEMISE -->
+
+
+      <!-- ════════════════════════════════════════════
+           PANTALON JEAN — 20 articles
+      ════════════════════════════════════════════ -->
+      <div class="category-block">
+        <div class="category-name">Pantalon Jean <span>— 20 articles</span></div>
+        <div class="scroll-row">
+
+          <!-- ── Jean 1 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean1.jpg" alt="Jean 1"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean </div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order"data-nom="Jean" data-prix="7 000 FCFA" data-image="images/jean1.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 2 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean2.jpg" alt="Jean 2"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean noir </div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Jean noir " data-prix="7 000 FCFA" data-image="images/jean2.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 3 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean3.jpg" alt="Jean 3"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean </div>
+              <div class="product-price">6 500 FCFA</div>
+              <button class="btn-order" data-nom="Jean " data-prix="6 500 FCFA" data-image="images/jean3.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 4 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean4.jpg" alt="Jean 4"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean </div>
+              <div class="product-price">7 500 FCFA</div>
+              <button class="btn-order" data-nom="Jean" data-prix="7 500 FCFA" data-image="images/jean4.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 5 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean5.jpg" alt="Jean 5"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean noir</div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Jean noir" data-prix="7 000 FCFA" data-image="images/jean5.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 6 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean6.jpg" alt="Jean 6"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean bleu</div>
+              <div class="product-price">7 500 FCFA</div>
+              <button class="btn-order" data-nom="Jean bleu" data-prix="7 500 FCFA" data-image="images/jean6.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 7 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean7.jpeg" alt="Jean 7"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean Chrome Hearts Bleu ciel </div>
+              <div class="product-price">8 000 FCFA</div>
+              <button class="btn-order" data-nom="Jean Chrome Hearts Bleu Ciel" data-prix="8 000 FCFA" data-image="images/jean7.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 8 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean8.jpeg" alt="Jean 8"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean Chrome Hearts Gris</div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Jean Chrome Hearts" data-prix="7 000 FCFA" data-image="images/jean8.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 9 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean9.jpeg" alt="Jean 9"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean Chrome Hearts Noir</div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Jean Chrome Hearts Noir" data-prix="7 000 FCFA" data-image="images/jean9.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 10 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean10.jpg" alt="Jean 10"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean Chrome Hearts kaki</div>
+              <div class="product-price">8 500 FCFA</div>
+              <button class="btn-order" data-nom="Jean Chrome Hearts Kaki" data-prix="8 500 FCFA" data-image="images/jean10.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 11 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean11.jpeg" alt="Jean 11"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean Chrome Hearts Blanc</div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Jean Chrome Hearts Blanc" data-prix="7 000 FCFA" data-image="images/jean11.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 12 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean12.jpeg" alt="Jean 12"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean Chrome Hearts Bleu</div>
+              <div class="product-price">7 500 FCFA</div>
+              <button class="btn-order" data-nom="Jean Chrome Hearts Bleu" data-prix="7 500 FCFA" data-image="images/jean12.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 13 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean13.jpeg" alt="Jean 13"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean PURPLE bleu</div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Jean Purple Bleu" data-prix="7 000 FCFA" data-image="images/jean13.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 14 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean14.jpeg" alt="Jean 14"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean </div>
+              <div class="product-price">6 500 FCFA</div>
+              <button class="btn-order" data-nom="Jean " data-prix="6 500 FCFA" data-image="images/jean14.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Jean 15 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/jean15.jpeg" alt="Jean 15"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Jean </div>
+              <div class="product-price">7 500 FCFA</div>
+              <button class="btn-order" data-nom="Jean " data-prix="7 500 FCFA" data-image="images/jean15.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+     
+        </div>
+      </div><!-- /JEAN -->
+
+
+      <!-- ════════════════════════════════════════════
+           MONTRE — 10 articles
+      ════════════════════════════════════════════ -->
+      <div class="category-block">
+        <div class="category-name">Montre <span>— 10 articles</span></div>
+        <div class="scroll-row">
+
+          <!-- ── Montre 1 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/montre1.jpg"
+                alt="Montre 1"
+              />
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Rolex Verte</div>
+              <div class="product-price">7000F</div>
+              <button class="btn-order" data-nom="Rolex Verte" data-prix="7000F" data-image="images/montre1.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 2 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre2.jpg" alt="Montre 2"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Rolex Doré</div>
+              <div class="product-price">7000FCFA</div>
+              <button class="btn-order" data-nom="Rolex Doré" data-prix="7000FCFA" data-image="images/montre2.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 3 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre3.jpeg" alt="Montre 3"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Rolex Fond bleu</div>
+              <div class="product-price">7000FCFA</div>
+              <button class="btn-order" data-nom="Rolex Fond Bleu" data-prix="7000FCFA" data-image="images/montre3.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 4 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre4.jpeg" alt="Montre 4"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Rolex Doré</div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Rolex Doré" data-prix="7 000 FCFA" data-image="images/montre4.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 5 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre5.jpeg" alt="Montre 5"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Rolex rouge</div>
+              <div class="product-price"> 7000 FCFA</div>
+              <button class="btn-order" data-nom="Rolex Rouge" data-prix="7000 FCFA" data-image="images/montre5.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 6 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre6.jpeg" alt="Montre 6"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Rolex argenté fond noir</div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Rolex argenté fond noir" data-prix="7 000 FCFA" data-image="images/montre6.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 7 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre7.jpeg" alt="Montre 7"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Rolex Rolex argenté fond bleu</div>
+              <div class="product-price">7 000 FCFA</div>
+              <button class="btn-order" data-nom="Rolex argenté fond bleu" data-prix="7000 FCFA" data-image="images/montre7.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 8 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre8.jpeg" alt="Montre 8"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Rolex argenté fond blanc</div>
+              <div class="product-price">7000 FCFA</div>
+              <button class="btn-order" data-nom="Rolex argenté fond noir" data-prix="7000 FCFA" data-image="images/montre8.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 9 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre9.jpeg" alt="Montre 9"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Richard mille Orange</div>
+              <div class="product-price">20000 FCFA</div>
+              <button class="btn-order" data-nom="Richard mille Orange" data-prix="20 000 FCFA" data-image="images/montre9.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Montre 10 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/montre10.jpeg" alt="Montre 10"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Richard mille Rouge</div>
+              <div class="product-price">20 000 FCFA</div>
+              <button class="btn-order" data-nom="Richard mille Rouge" data-prix="7000 FCFA" data-image="images/montre10.jpeg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /MONTRE -->
+
+
+      <!-- ════════════════════════════════════════════
+           CHAINE — 10 articles
+      ════════════════════════════════════════════ -->
+      <div class="category-block">
+        <div class="category-name">Chaine <span>— 3 articles</span></div>
+        <div class="scroll-row">
+
+          <!-- ── Chaine 1 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/chaine1.jpg" alt="Chaine 1"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaine  Argent Croix verte </div>
+              <div class="product-price">10000 FCFA</div>
+              <button class="btn-order" data-nom="Chaine Croix verte" data-prix="10000 FCFA" data-image="images/chaine1.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Chaine 2 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/chaine2.jpg" alt="Chaine 2"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaine Argent Croix blanche </div>
+              <div class="product-price">3 000 FCFA</div>
+              <button class="btn-order" data-nom="Chaine Argent Croix blanche " data-prix="10000 FCFA" data-image="images/chaine2.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Chaine 3 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/chaine3.jpg" alt="Chaine 3"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chaine Argenté</div>
+              <div class="product-price">10000 FCFA</div>
+              <button class="btn-order" data-nom="Chaine Argenté" data-prix="10000 FCFA" data-image="images/chaine3.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+     
+        </div>
+      </div><!-- /CHAINE -->
+
+
+      <!-- ════════════════════════════════════════════
+           CHAPEAU — Beaucoup d'articles
+      ════════════════════════════════════════════ -->
+      <div class="category-block">
+        <div class="category-name">Chapeau <span>— Beaucoup d'articles</span></div>
+        <div class="scroll-row">
+      
+       <p><h3>NB</h3>:<strong > Pour le cas des chapeau si vous voulez commander une unité ou plus. vous allez patientez lorsqu'on vous contactera vous pourrez nous dire lequel vous souhaitez acheter</strong></p>
+          
+
+<!-- ── Chapeau 1 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/chapeau1.jpg" alt="Chapeau 1"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chapeau NY</div>
+              <div class="product-price">3500 FCFA L'unité</div>
+              <button class="btn-order" data-nom="Chapeau NY" data-prix="3500 FCFA" data-image="images/chapeau1.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Chapeau 2 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/chapeau2.jpg" alt="Chapeau 2"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chapeau</div>
+              <div class="product-price">3 500 FCFA</div>
+              <button class="btn-order" data-nom="Chapeau" data-prix="3500 FCFA" data-image="images/chapeau2.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Chapeau 3 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/chapeau3.jpg" alt="Chapeau 3"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Chapeau NY</div>
+              <div class="product-price">3500 FCFA</div>
+              <button class="btn-order" data-nom="chapeau NY" data-prix="3500 FCFA" data-image="images/chapeau3.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Chapeau 4 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/chapeau4.jpg" alt="Chapeau 4"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">chapeau LA</div>
+              <div class="product-price">2 500 FCFA</div>
+              <button class="btn-order" data-nom="Chapeau LA" data-prix="3500 FCFA" data-image="images/chapeau4.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /CHAPEAU -->
+
+
+      <!-- ════════════════════════════════════════════
+           SAC — 3 articles
+      ════════════════════════════════════════════ -->
+      <div class="category-block">
+        <div class="category-name">Sac <span>— 3 articles</span></div>
+        <div class="scroll-row">
+
+          <!-- ── Sac 1 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img
+                src="images/sac1.jpg"
+                alt="Sac 1"
+              />
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Sac de Voyage</div>
+              <div class="product-price">10 000 FCFA</div>
+              <button class="btn-order" data-nom="Sac de voyage" data-prix="10000 FCFA" data-image="images/sac1.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Sac 2 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/sac2.jpg" alt="Sac 2"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Sac SprayGround</div>
+              <div class="product-price">6 000 FCFA</div>
+              <button class="btn-order" data-nom="Sac SprayGround" data-prix="8000 FCFA" data-image="images/sac2.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+          <!-- ── Sac 3 ── -->
+          <div class="product-card">
+            <div class="product-img-area">
+              <img src="images/sac3.jpg" alt="Sac 3"/>
+              <div class="img-ph"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo</span></div>
+            </div>
+            <div class="product-info">
+              <div class="product-nom">Sac Polo</div>
+              <div class="product-price">7000 FCFA</div>
+              <button class="btn-order" data-nom="Sac Polo" data-prix="8000 FCFA" data-image="images/sac3.jpg" onclick="handleOrder(this)">Commander</button>
+            </div>
+          </div>
+
+       
+        </div>
+      </div><!-- /SAC -->
+
+
+    </div><!-- /categories-wrapper -->
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Big D - Tous droits réservés</p>
+</footer>
+
+</section>
+
+<script>
+/* ════════════════════════════════════════════════════════
+   CONFIG EMAILJS
+   Remplace ces valeurs par tes vraies informations
+════════════════════════════════════════════════════════ */
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+/* ════════════════════════════════════════════════════════
+   MODAL — ÉTAT
+════════════════════════════════════════════════════════ */
+var currentOrder = {
+  nom: '',
+  prix: '',
+  image: ''
+};
+
+function handleOrder(btn) {
+  currentOrder.nom   = btn.getAttribute('data-nom')   || '';
+  currentOrder.prix  = btn.getAttribute('data-prix')  || '';
+  currentOrder.image = btn.getAttribute('data-image') || '';
+  openModal();
+}
+
+function openModal() {
+  document.getElementById('modalProductName').textContent  = currentOrder.nom;
+  document.getElementById('modalProductPrice').textContent = currentOrder.prix;
+
+  ['clientName', 'clientWhatsapp', 'clientQuartier'].forEach(function(id) {
+    var input = document.getElementById(id);
+    if (input) input.value = '';
+  });
+
+  var status = document.getElementById('formStatus');
+  status.className = 'form-status';
+  status.textContent = '';
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = false;
+  btn.textContent = '✓ Confirmer ma commande';
+
+  document.getElementById('orderModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('orderModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ════════════════════════════════════════════════════════
+   EMAILJS — ENVOI COMMANDE
+════════════════════════════════════════════════════════ */
+function sendOrder() {
+  var name     = document.getElementById('clientName').value.trim();
+  var whatsapp = document.getElementById('clientWhatsapp').value.trim();
+  var quartier = document.getElementById('clientQuartier').value.trim();
+  var status   = document.getElementById('formStatus');
+  var btn      = document.getElementById('submitBtn');
+
+  if (!name || !whatsapp || !quartier) {
+    status.className = 'form-status error';
+    status.textContent = '⚠ Veuillez remplir tous les champs.';
+    return;
+  }
+
+  if (
+    EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY" ||
+    EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" ||
+    EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID"
+  ) {
+    status.className = 'form-status error';
+    status.textContent = '⚠ Configurez d’abord EmailJS (clé publique, service ID et template ID).';
+    return;
+  }
+
+  if (!window.emailjs) {
+    status.className = 'form-status error';
+    status.textContent = '✗ EmailJS n’est pas chargé.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    client_name   : name,
+    client_wa     : whatsapp,
+    client_area   : quartier,
+    product_name  : currentOrder.nom,
+    product_prix  : currentOrder.prix,
+    product_image : currentOrder.image,
+    to_email      : "komlanviiroukora@gmail.com"
+  })
+  .then(function() {
+    status.className = 'form-status success';
+    status.textContent = '✓ Commande envoyée ! Nous vous contacterons bientôt.';
+    btn.textContent = '✓ Confirmer ma commande';
+    btn.disabled = false;
+    setTimeout(closeModal, 2600);
+  })
+  .catch(function(err) {
+    status.className = 'form-status error';
+    status.textContent = '✗ Erreur réseau. Réessayez ou contactez-nous sur WhatsApp.';
+    btn.textContent = '✓ Confirmer ma commande';
+    btn.disabled = false;
+    console.error('EmailJS error:', err);
+  });
+}
+
+/* ════════════════════════════════════════════════════════
+   INITIALISATION GLOBALE
+════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function() {
+  /* Init EmailJS */
+  if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
+    emailjs.init({
+      publicKey: EMAILJS_PUBLIC_KEY
+    });
+  }
+
+  /* Fermer modal en cliquant sur l’overlay */
+  var modal = document.getElementById('orderModal');
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+  }
+
+  /* Fermer modal avec Échap */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  /* Logo placeholder */
+  var logoImg = document.querySelector('.logo-circle img');
+  var logoPlaceholder = document.querySelector('.logo-placeholder');
+
+  if (logoImg) {
+    function updateLogoState() {
+      if (logoImg.complete && logoImg.naturalWidth > 0 && logoImg.getAttribute('src').trim() !== '') {
+        logoImg.style.display = 'block';
+        if (logoPlaceholder) logoPlaceholder.style.display = 'none';
+      } else {
+        logoImg.style.display = 'none';
+        if (logoPlaceholder) logoPlaceholder.style.display = 'inline';
+      }
+    }
+
+    logoImg.addEventListener('load', updateLogoState);
+    logoImg.addEventListener('error', updateLogoState);
+    updateLogoState();
+  }
+
+  /* Images produits : masquer le placeholder si l’image charge */
+  document.querySelectorAll('.product-img-area img').forEach(function(img) {
+    var placeholder = img.parentElement.querySelector('.img-ph');
+
+    function updateProductImageState() {
+      if (!placeholder) return;
+
+      if (img.complete && img.naturalWidth > 0 && img.getAttribute('src').trim() !== '') {
+        placeholder.classList.add('hidden');
+      } else {
+        placeholder.classList.remove('hidden');
+      }
+    }
+
+    img.addEventListener('load', updateProductImageState);
+    img.addEventListener('error', updateProductImageState);
+    updateProductImageState();
+  });
+
+  /* Scroll reveal */
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.category-block, .horaire-card, .step-card, .adresse-card')
+    .forEach(function(el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      revealObs.observe(el);
+    });
+});
+</script>
+</body>
+</html>
