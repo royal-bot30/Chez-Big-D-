@@ -32,8 +32,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Barlow', sans-serif;
-  font-weight: 700;
+  police de caractères : 'Barlow' , sans-serif ;
+  police-weight : 700 ;
   background: var(--white);
   color: var(--text-main);
   overflow-x: hidden;
@@ -482,7 +482,7 @@ footer a { color: var(--blue); text-decoration: none; }
 
   <!-- Logo : remplace src="" par le chemin de ton image, ex: src="images/logo.jpg" -->
   <div class="logo-circle">
-    <img src="" alt="Logo Big D."/>
+    <img src="Logo.jpg" alt="Logo Big D."/>
     <span class="logo-placeholder">BD</span>
   </div>
 
@@ -490,8 +490,8 @@ footer a { color: var(--blue); text-decoration: none; }
 
   <p class="hero-products">
     <strong>Pull</strong> &nbsp;·&nbsp; <strong>Jean</strong> &nbsp;·&nbsp;
-    <strong>Montre</strong> &nbsp;·&nbsp; <strong>Accessoires</strong><br/>
-    <strong>Chapeau</strong> &nbsp;·&nbsp; <strong>Sac</strong> &nbsp;·&nbsp; <strong>Chemise</strong>
+    <strong>Montre</strong> &nbsp;·&nbsp; <strong>Montre</strong><br/>
+    <strong>Chapeau</strong> &nbsp;·&nbsp; <strong>Sac</strong> &nbsp;·&nbsp; <strong>Chaussures</strong>
   </p>
 
   <blockquote class="slogan">
@@ -1804,7 +1804,7 @@ function sendOrder() {
     client_area   : quartier,
     product_name  : currentOrder.nom,
     product_prix  : currentOrder.prix,
-    product_image : "https://github.com/royal-bot30/Chez-Big-D-"+currentOrder.image,
+    product_image : "https://royal-bot30.github.io/Chez-Big-D/" + currentOrder.image,
     to_email      : "komlanviiroukora@gmail.com"
   })
   .then(function() {
